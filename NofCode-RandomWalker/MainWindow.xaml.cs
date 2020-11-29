@@ -26,6 +26,7 @@ namespace NofCode_RandomWalker
         private ulong _frameCounter = 0;
         private RandomWalker walker;
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -45,9 +46,9 @@ namespace NofCode_RandomWalker
         }
 
         private void WindowSizeChanged(object sender, SizeChangedEventArgs e) {
-            this.walker.PosX = e.NewSize.Width / 2;
-            this.walker.PosY = e.NewSize.Height / 2;
+
             this._frameCounter = 0;
+            this.walker.Reset();
         }
 
         private void DpTimer_Tick(object sender, EventArgs e)
@@ -64,8 +65,7 @@ namespace NofCode_RandomWalker
 
         private void Draw()
         {
-            this.walker.PosX = this.ActualWidth / 2;
-            this.walker.PosY = this.ActualHeight / 2;
+            this.walker.RandomMove(2);
             this.walker.Display();
         }
     }
